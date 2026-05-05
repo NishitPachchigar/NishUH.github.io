@@ -10,7 +10,7 @@ This form asks for details such as patient's demographic data and history in ord
 to create a profile.
 -->
     <head>
-        <title>Homework 2</title>
+        <title>Homework 1</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -24,21 +24,21 @@ to create a profile.
                     document.getElementById("date").innerHTML += date.toDateString();
                 </script>
             </div>
-            <form class="form-container" action="thank-you.html" onsubmit="return validatePassword()"> 
+            <form class="form-container" action="thank-you.html">  <!-- form redirects to thank you page -->
                 <h1>Patient Registration Form</h1>
                 <!-- Personal Information section starting -->
                 <h4>Personal Information</h4>
                 <div class="form-row">
                     <label for="name">Full name : </label>
                     <div>
-                    <input type="text" id="fname" pattern="[A-Za-z'-]{1,30}" title="1-30 characters, letters, apostrophes, or dashes only" name="fname" required>
-                    <input type="text" id="midname" pattern="[A-Za-z]{1}" title="Single letter only" name="midname">
-                    <input type="text" id="lname" pattern="[A-Za-z0-9'-]{1,30}" title="Letters, numbers (like 3rd), apostrophes, dashes only" name="lname" required>
-                </div>
+                    <input type="text" id="fname" name="fname" placeholder="First Name" required>
+                    <input type="text" id="midname" name="midname" placeholder="Mid">
+                    <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+                    </div>
                 </div>
                 <div class="form-row">
                     <label for="dob">Date of Birth : </label>
-                    <input type="date" id="dob" name="dob" min="1900-01-01" max="2026-12-31" required title="Select your birth date (not in future, not older than 120 years)">
+                    <input type="text" id="dob" name="dob" placeholder="MM/DD/YYYY" required>
                 </div>
                 <div class="form-row">
                     <label for="sex">Sex : </label>
@@ -50,7 +50,7 @@ to create a profile.
                 </div>
                 <div class="form-row">
                     <label for="ssn">Social Security : </label>
-                    <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="Enter SSN in format 123-45-6789" required>
+                    <input type="text" id="ssn" name="ssn" placeholder="xxx-xx-xxxx" required>
                 </div>
                 <div class="form-row">
                     <label for="language">Preffered Language : </label>
@@ -129,7 +129,7 @@ to create a profile.
                 </div>
                 <div class="form-row">
                     <label for="zipcode">Zipcode : </label>
-                    <input type="text" id="zipcode" name="zipcode" pattern="\d{5}(-\d{4})?" title="5-digit zip or zip+4 format" required>
+                    <input type="text" id="zipcode" name="zipcode" placeholder="zipcode" required>
                 </div>
                 <div class="form-row">
                     <label for="country">Country : </label>
@@ -141,32 +141,25 @@ to create a profile.
                 <div class="form-row">
                     <label for="fname">Phone : </label>
                     <div>
-                    <input type="text" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" title="Format: 123-456-7890" required>
+                    <input type="text" id="phone" name="phone" placeholder="(123) 456-7890" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="email">Email : </label>
                     <div class="inline-row2">
-                        <input type="email" id="email" name="email" pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@email.com" title="Enter a valid email like name@domain.com" required>
+                        <input type="text" name="email-address" placeholder="address" required>
+                        @
+                        <input type="text" name="domain" placeholder="domain" required>
+                        .com
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="emergency-contact">Emergency Contact : </label>
-                    <input type="text" id="emergency-contact" name="emergency-contact" pattern="\d{3}-\d{3}-\d{4}" title="Format: 123-456-7890" required>     
+                         <input type="text" id="emergency-contact" name="emergency-contact" placeholder="(123) 456-7890" required>
                 </div>
                 <!-- Contact Information section ending -->
                 <!-- Medical History Information section starting -->
                 <h4>Medical History</h4>
-                <div class="form-row">
-                    <label>Diseases (check all that apply):</label>
-                    <div>
-                        <label><input type="checkbox" name="disease" value="Chickenpox"> Chickenpox</label>
-                        <label><input type="checkbox" name="disease" value="Measles"> Measles</label>
-                        <label><input type="checkbox" name="disease" value="Covid-19"> Covid-19</label>
-                        <label><input type="checkbox" name="disease" value="Flu"> Flu</label>
-                        <label><input type="checkbox" name="disease" value="Asthma"> Asthma</label>
-                    </div>
-                </div>
                 <div class="form-row">
                     <label for="inquiry">Inquiry : </label>
                     <input type="text" id="inquiry" name="inquiry" placeholder="Please explain your condition">
@@ -193,17 +186,12 @@ to create a profile.
                         <span id="healthValue">5</span>
                     </div>
                 </div>
-                <div class="form-row">
-                    <label for="comments">Comments:</label>
-                    <textarea id="comments" rows="4" cols="40" title="Optional comments (avoid quotes)">
-                    </textarea>
-                </div>
                 <!-- Medical History Information section ending -->
                 <!-- Account Information section starting -->
                 <h4>Account Information</h4> 
                 <div class="form-row">
                     <label for="userId">User ID : </label>
-                    <input type="text" id="userId" name="userId" pattern="^[a-zA-Z][a-zA-Z0-9_-]{4,29}$" title="5-30 characters, must start with a letter, no spaces" required>
+                    <input type="text" id="userId" name="userId" placeholder="Username" required>
                 </div>
                 <div class="form-row">
                     <label for="add2">Password : </label>
@@ -220,14 +208,9 @@ to create a profile.
                 <!-- Account Information section ending -->
                 <div class="form-buttons">
                     <button type="reset" class="reset-button">Reset</button>
-                    <button type="button" onclick="reviewForm()">Review</button> <!-- Added the review button -->
                     <button type="submit" class="submit-button">Submit</button>
                 </div>
             </form>
-            <div id="reviewSection">
-                <h3>Review Information</h3>
-                <div id="reviewInformation"></div>
-            </div>
         </div>
         <hr>
         <footer class="footer">
@@ -238,5 +221,4 @@ to create a profile.
             </p>
         </footer>
     </body>
-    <script src="script.js"></script>
 </html>
