@@ -46,28 +46,131 @@ function reviewForm() {
 
     document.getElementById("reviewInformation").innerHTML = reviewText;
 }
-// password validation function
-function validatePassword() {
+
+// password field validation function
+function validatePassword(){
     let pwd = document.getElementById("password").value;
-    let confirm = document.getElementById("confirm-password").value;
-
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()\-_=+]).{8,30}$/;
-
-    if (!regex.test(pwd)) {
-        alert("Password must include uppercase, lowercase, number, special character");
+    let error = document.getElementById("password-error");
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,30}$/;
+    if(!regex.test(pwd)){
+        error.textContent = "Must contain uppercase, lowercase, number, min 8 chars";
         return false;
     }
-
-    if (pwd !== confirm) {
-        alert("Passwords do not match");
-        return false;
-    }
-
+    error.textContent = "";
     return true;
 }
+
+// Confirm password field validation function 
+function validateConfirmPassword(){
+    let pwd = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm-password").value;
+    let error = document.getElementById("confirm-error");
+    if(pwd !== confirm){
+        error.textContent = "Passwords do not match";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+// First name field validation function
+function validateFirstName(){
+    let fname = document.getElementById("fname").value;
+    let error = document.getElementById("fname-error");
+    let regex = /^[A-Za-z'-]{1,30}$/;
+    if(!regex.test(fname)){
+        error.textContent ="PLease enter valid First name. Maximum 30 characters including letters, apostrophes, and dashes allowed";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+// Last name field  validation function 
+function validateLastName() {
+    let lname = document.getElementById("lname").value;
+    let error = document.getElementById("lname-error");
+    let regex = /^[A-Za-z'-]{1,30}$/;
+    if(!regex.test(lname)){
+        error.textContent = "Please enter valid last name.";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+// Email filed validation function 
+function validateEmail(){
+    let email = document.getElementById("email");
+    let error = document.getElementById("email-error");
+    email.value = email.value.toLowerCase();
+    let regex = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+    if(!regex.test(email.value)){
+        error.textContent = "Please enter valid email.";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+// Phone firled validation function 
+function validatePhone(){
+    let phone = document.getElementById("phone").value;
+    let error = document.getElementById("phone-error");
+    let regex = /^\d{3}-\d{3}-\d{4}$/;
+    if(!regex.test(phone)){
+        error.textContent = "Please enter phone number in the Format: 123-456-7890";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+// function to format SSN as input from user
+function formatSSN(){
+    let ssn = document.getElementById("ssn");
+    let numbers = ssn.value.replace(/\D/g, "");
+    if(numbers.length > 3 && numbers.length <= 5){
+        numbers = numbers.slice(0,3) + "-" + numbers.slice(3);
+    }
+    else if(numbers.length > 5){
+        numbers = numbers.slice(0,3) + "-" + numbers.slice(3,5) + "-" + numbers.slice(5,9);
+    }
+    ssn.value = numbers;
+}
+
 // turns the userID into lower case
 window.onload = function() {
     document.getElementById("userId").addEventListener("input", function() {
         this.value = this.value.toLowerCase();
     });
 };
+
+// User ID field validation function 
+function validateUserId(){
+    let userId = document.getElementById("userId");
+    let error = document.getElementById("userid-error");
+    userId.value = userId.value.toLowerCase();
+    let regex = /^[a-zA-Z][a-zA-Z0-9_-]{4,19}$/;
+    if(!regex.test(userId.value)){
+        error.textContent = "5-20 chars, start with letter";
+        return false;
+    }
+    error.textContent = "";
+    return true;
+}
+
+//function to validate other functions and show submit button
+function validateForm(){
+    let valid =
+        validateFirstName() &&
+        validateLastName() &&
+        validateEmail() &&
+        validatePhone() &&
+        validatePassword() &&
+        validateConfirmPassword() &&
+        validateUserId();
+    if(valid){
+        document.getElementById("submitButton").style.display = "inline-block";
+    }
+}

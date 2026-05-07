@@ -147,3 +147,12 @@ button{
 #reviewSection p {
     margin: 5px 0;
 }
+
+/* Styling for error messages */
+.error {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+    min-height: 18px;
+}

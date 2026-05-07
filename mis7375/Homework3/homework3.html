@@ -2,15 +2,15 @@
 <!--
 Program Name : patient-form.html
 Author : Nishit Pachchigar
-Date Created : 02/19/2026
-Date last edited : 02/27/2026
+Date Created : 04/10/2026
+Date last edited : 05/06/2026
 Version : 2.5
 Description : This file creates a foundation for patient registration form.
 This form asks for details such as patient's demographic data and history in order
 to create a profile.
 -->
     <head>
-        <title>Homework 2</title>
+        <title>Homework 3</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -24,21 +24,27 @@ to create a profile.
                     document.getElementById("date").innerHTML += date.toDateString();
                 </script>
             </div>
-            <form class="form-container" action="thank-you.html" onsubmit="return validatePassword()"> 
+            <form class="form-container" action="thank-you.html" onsubmit="return validateForm()"> 
                 <h1>Patient Registration Form</h1>
                 <!-- Personal Information section starting -->
                 <h4>Personal Information</h4>
                 <div class="form-row">
                     <label for="name">Full name : </label>
                     <div>
-                    <input type="text" id="fname" pattern="[A-Za-z'-]{1,30}" title="1-30 characters, letters, apostrophes, or dashes only" name="fname" required>
+                    <input type="text" id="fname" pattern="[A-Za-z'-]{1,30}" title="Enter 1-30 characters, letters, apostrophes, or dashes only" name="fname" oninput="validateFirstName()">
+                        <span class="error" id="fname-error">
+                        </span>
                     <input type="text" id="midname" pattern="[A-Za-z]{1}" title="Single letter only" name="midname">
-                    <input type="text" id="lname" pattern="[A-Za-z0-9'-]{1,30}" title="Letters, numbers (like 3rd), apostrophes, dashes only" name="lname" required>
+                    <input type="text" id="lname" pattern="[A-Za-z'-]{1,30}" title="Enter 1-30 characters, letters, apostrophes, or dashes only" name="lname" oninput="validateLastName()">
+                        <span class="error" id="lname-error">
+                        </span>
                 </div>
                 </div>
                 <div class="form-row">
                     <label for="dob">Date of Birth : </label>
                     <input type="date" id="dob" name="dob" min="1900-01-01" max="2026-12-31" required title="Select your birth date (not in future, not older than 120 years)">
+                        <span class="error" id="dob-error">
+                        </span>
                 </div>
                 <div class="form-row">
                     <label for="sex">Sex : </label>
@@ -50,7 +56,9 @@ to create a profile.
                 </div>
                 <div class="form-row">
                     <label for="ssn">Social Security : </label>
-                    <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="Enter SSN in format 123-45-6789" required>
+                    <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="Enter SSN in format 123-45-6789" required oninput="formatSSN()">
+                        <span class="error" id="ssn-error">
+                        </span>
                 </div>
                 <div class="form-row">
                     <label for="language">Preffered Language : </label>
@@ -141,18 +149,24 @@ to create a profile.
                 <div class="form-row">
                     <label for="fname">Phone : </label>
                     <div>
-                    <input type="text" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" title="Format: 123-456-7890" required>
+                    <input type="text" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" placeholder="123-456-7890" title="Format: 123-456-7890" required oninput="validatePhone()">
+                        <span class="error" id="phone-error">
+                        </span>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="email">Email : </label>
                     <div class="inline-row2">
-                        <input type="email" id="email" name="email" pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" placeholder="example@email.com" title="Enter a valid email like name@domain.com" required>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" title="Enter a valid email like name@domain.com" required oninput="validateEmail()">
+                            <span class="error" id="email-error">
+                            </span>
                     </div>
                 </div>
                 <div class="form-row">
                     <label for="emergency-contact">Emergency Contact : </label>
                     <input type="text" id="emergency-contact" name="emergency-contact" pattern="\d{3}-\d{3}-\d{4}" title="Format: 123-456-7890" required>     
+                        <span class="error" id="emergency-contact-error">
+                        </span>
                 </div>
                 <!-- Contact Information section ending -->
                 <!-- Medical History Information section starting -->
@@ -203,15 +217,21 @@ to create a profile.
                 <h4>Account Information</h4> 
                 <div class="form-row">
                     <label for="userId">User ID : </label>
-                    <input type="text" id="userId" name="userId" pattern="^[a-zA-Z][a-zA-Z0-9_-]{4,29}$" title="5-30 characters, must start with a letter, no spaces" required>
+                    <input type="text" id="userId" name="userId" title="5-30 characters, must start with a letter, no spaces" required oninput="validateUserId()">
+                        <span class="error" id="userid-error">
+                        </span>
                 </div>
                 <div class="form-row">
                     <label for="add2">Password : </label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required oninput="validatePassword()">
+                        <span class="error" id="password-error">
+                        </span>
                 </div>
                 <div class="form-row">
                     <label for="add2">Confirm Password : </label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-Enter Password" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-Enter Password" required oninput="validateConfirmPassword()">
+                        <span class="error" id="confirm-error">
+                        </span>
                 </div>
                 <p class="checkbox">
                     <input type="checkbox" required>
@@ -221,7 +241,9 @@ to create a profile.
                 <div class="form-buttons">
                     <button type="reset" class="reset-button">Reset</button>
                     <button type="button" onclick="reviewForm()">Review</button> <!-- Added the review button -->
-                    <button type="submit" class="submit-button">Submit</button>
+                    <!-- Validate button, after successful validation turns into submit button -->
+                    <button type="button" onclick="validateForm()">Validate</button>
+                    <button type="submit" id="submitButton" style="display:none;">Submit</button>
                 </div>
             </form>
             <div id="reviewSection">
