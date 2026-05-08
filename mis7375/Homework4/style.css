@@ -1,0 +1,169 @@
+/* Program Name : style.css
+Author : Nishit Pachchigar
+Date Created : 02/19/2026
+Date last edited : 02/27/2026
+Version : 2.5
+Description : This file adds graphics to the html file */
+
+/* entire page */
+body{
+    background-color: seashell;
+    font-family: sans-serif;
+}
+/* selector styling */
+h1{
+    text-align: center;
+    font-family: sans-serif;
+}
+/* Styling for header h1 element */
+h1.Main-page-name{
+    font-family: cursive;
+    font-size: 50px;
+    color: rgb(195, 65, 65);
+    margin: 50px;
+    font-weight: bolder;
+}
+p{
+    margin-top: 200px;
+    margin-left: 50px;
+}
+p.checkbox{ /* Aligning the checkbox in the center */
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 0px
+}
+p.p-footer{
+    margin-top: 0px;
+    margin-left: 50px;
+    padding-top: 0px;
+}
+#date{
+    padding-left: 50px;
+}
+h4{
+    margin: 25px 0 2px 200px;  /* Aligning headings of the section with input column */
+    text-align: left;
+}
+hr{
+    width: auto;
+}
+label{
+    text-align: right;   
+    padding-right: 10px;  
+}
+input[type="text"]{ 
+    padding: 5px;       /* Padding around string input boxes */
+}
+input[type="password"]{
+    padding: 5px;
+}
+input[type="range"]{
+    width: 200px;
+}
+button{
+    padding: 10px 10px;     /* styling buttons and adjusting margin */
+    margin-top: 50px;
+    font-size: 16px;
+    width: 150px;
+    background-color: rgb(208, 110, 114);
+    color: white;
+}
+#midname{
+    width: 30px; /* Adjusting width for middle name input box */
+}
+#zipcode{
+    width: 150px; /* Adjusting width for zipcode input box */
+}
+#country{
+    width: 150px; /* Adjusting width for country input box */
+}
+.header{
+    position: sticky;  /* fixed header */
+    top: 0;
+    background-color: rgba(226, 46, 43, 0.143);
+    padding: 5px 40px;     /* styling header section */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    
+}
+.footer{
+    background-color: #f1d3d3;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.logo{
+    width: 150px;
+    height: 150px;
+}
+/* Form styling */
+.form-container{
+    width: 600px;       /* Creating container form styling */
+    margin: 50px auto;
+    background-color: #f1d3d3;
+    padding: 50px 50px;
+}
+.form-row{
+    display: grid;
+    grid-template-columns: 200px 1fr;   /* Creating two rows for form */
+    align-items: center;
+    margin-bottom: 2px;
+}
+/* form fields styling */
+.inline-row{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+}
+.inline-row2{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr 1fr;
+    gap: 5px;
+    align-items: center;
+}
+.inline-label{
+    text-align: right;
+}
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+/* Account Information styling */
+#userId{
+    width: 250px;
+}
+#password{
+    width: 250px;
+}
+#confirm-password{
+    width: 250px;
+}
+/* Range slider container styling */
+.slider-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+/* Styling for review section */
+#reviewSection{
+    border: 1px solid black; 
+    padding:10px; margin-top:px;
+}
+/* Review section content styling */
+#reviewSection p {
+    margin: 5px 0;
+}
+
+/* Styling for error messages */
+.error {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+    min-height: 18px;
+}
